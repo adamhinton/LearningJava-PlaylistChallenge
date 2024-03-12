@@ -1,7 +1,9 @@
 
 package dev.lpa;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,14 +13,24 @@ public class Main {
 
 
 class Album {
+
+    public static class SongList extends ArrayList<Song>{
+
+        private List<Song> songs;
+
+        public SongList() {
+            this.songs = new ArrayList<Song>();
+        }
+    }
+
     private String name;
     private String artist;
-    private ArrayList<Song> songs;
+    private SongList songs;
 
     public Album(String name, String artist) {
         this.name = name;
         this.artist = artist;
-        songs = new ArrayList<>();
+        this.songs = new SongList();
     }
     public boolean addSong(String title, double duration) {
         if (findSong(title) == null) {
