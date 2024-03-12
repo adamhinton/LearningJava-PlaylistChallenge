@@ -21,6 +21,39 @@ class Album {
         public SongList() {
             this.songs = new ArrayList<Song>();
         }
+
+        // add song
+
+        // TODO: Mark this private
+        @Override
+        public boolean add(Song song) {
+            if(findSong(song.getTitle()) != null){
+                return false;
+            }
+            else{
+                songs.add(song);
+                return true;
+            }
+        }
+
+        private Song findSong(String title){
+            for (Song song : songs){
+                if (song.getTitle().equals(title)){
+                    return song;
+                }
+            }
+            return null;
+        }
+
+        private Song findSong(int trackNumber){
+            if(songs.get(trackNumber) != null){
+                return songs.get(trackNumber);
+            }
+            else{
+                return null;
+            }
+        }
+
     }
 
     private String name;
